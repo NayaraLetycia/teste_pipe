@@ -45,7 +45,7 @@ jobs:
         run: |
           mkdir -p out
           echo "Relatório do pipeline" > out/relatorio.txt
-          echo "Repo: $GITHUB_REPOSITORY" >> out/relatório.txt
+          echo "Repo: $GITHUB_REPOSITORY" >> out/relatorio.txt
           echo "Branch: $GITHUB_REF_NAME" >> out/relatorio.txt
           exho "SHA: $GITHUB_SHA" >> out/relatorio.txt
           echo "Data (UTC): $(date -u)" >> out/relatorio.txt
