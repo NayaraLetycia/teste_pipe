@@ -40,3 +40,22 @@ jobs:
             exit 1
           fi
           echo "OK: secret carregada"
+
+      - name: Gerar relatório
+        run: |
+          mkdir -p out
+          echo "Relatório do pipeline" > out/relatorio.txt
+          echo "Repo: $GITHUB_REPOSITORY" >> out/relatório.txt
+          echo "Branch: $GITHUB_REF_NAME" >> out/relatorio.txt
+          exho "SHA: $GITHUB_SHA" >> out/relatorio.txt
+          echo "Data (UTC): $(date -u)" >> out/relatorio.txt
+          echo "ENVIRONMENT: $ENVIRONMENT" >> out/RELATORIO.txt
+          ls -la out
+          echo "----"
+          cat out/relatorio.txt
+
+      - name: Upload do artefato (relatório)
+        uses: actions/upload-artifact@v4
+        with:
+          name: relatorio
+          patch: out/relatorio.txt
