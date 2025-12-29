@@ -6,6 +6,11 @@ on:
 jobs:
   hello:
     runs-on: ubuntu-latest
+
+    env:
+      APP_NAME: teste_pipe
+      ENVIRONMENT: ci
+      
     steps:
       - name: Checkout do repositório
         uses: actions/checkout@v4
