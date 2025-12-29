@@ -5,7 +5,7 @@ on:
 
 jobs:
   hello:
-    if: ${{ matrix.environment != 'prod' || GITHUB.REF_NAME == 'main' }}
+    if: ${{ matrix.environment != 'prod' || github.ref_name == 'main' }}
     runs-on: ubuntu-latest
 
     strategy:
