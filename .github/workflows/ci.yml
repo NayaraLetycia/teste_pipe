@@ -19,3 +19,9 @@ jobs:
         run: |
           pwd
           ls -la
+
+      - name: Usando variáveis de ambiente
+        run: |
+          echo "Aplicação: $APP_NAME"
+          echo "Ambiente: $ENVIRONMENT"
+          echo "Branch: $GITHUB_REF_NAME"
