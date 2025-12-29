@@ -10,11 +10,12 @@ jobs:
       - name: Checkout do repositório
         uses: actions/checkout@v4
 
+      - name: Verificações básicas do repositório
+        run: |
+          test -f README.md || (echo "ERRO: README.md não existe" && exit 1)
+          echo "OK: README.md existe"
+
       - name: Listar arquivos do repo
         run: |
           pwd
           ls -la
-
-      - name: Mostrar mensagem
-        run: echo "Hello from GitHub Actions!"
-
