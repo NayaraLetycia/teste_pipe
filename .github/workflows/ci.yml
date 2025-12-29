@@ -5,12 +5,12 @@ on:
 
 jobs:
   hello:
+    if: ${{ matrix.environment != 'prod' || GITHUB.REF_NAME == 'main' }}
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
         environment: [ci, staging, prod]
-  if: ${{ matrix.environment != 'prod' || github.ref_name == 'main' }}
 
     env:
       APP_NAME: teste_pipe
