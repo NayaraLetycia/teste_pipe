@@ -15,36 +15,41 @@ jobs:
       APP_NAME: teste_pipe
       ENVIRONMENT: ${{ matrix.environment }}
       IS_ALLOWED: ${{ matrix.environment != 'prod' || github.ref_name == 'main' }}
-      if: ${{ env.IS_ALLOWED }}
+      
       
     steps:
       #- name: Bloquear PROD fora da main
       #  if: ${{ matrix.environment != 'prod' && github.ref_name == 'main' }}
        
       - name: Checkout do repositório
-        if: ${{ matrix.environment != 'prod' || github.ref_name == 'main' }}
+        if: ${{ env.IS_ALLOWED }}
+       # if: ${{ matrix.environment != 'prod' || github.ref_name == 'main' }}
         uses: actions/checkout@v4
 
       - name: Verificações básicas do repositório
+        if: ${{ env.IS_ALLOWED }}
         run: |
           test -f README.md || (echo "ERRO: README.md não existe" && exit 1)
           #if: ${{ matrix.environment != 'prod' || github.ref_name == 'main' }}
           #run: |
-            test -f README.md || exit 1
+          #test -f README.md || exit 1
           echo "OK: README.md existe"
 
       - name: Listar arquivos do repo
+        if: ${{ env.IS_ALLOWED }}
         run: |
           pwd
           ls -la
 
       - name: Usando variáveis de ambiente
+        if: ${{ env.IS_ALLOWED }}
         run: |
           echo "Aplicação: $APP_NAME"
           echo "Ambiente: $ENVIRONMENT"
           echo "Branch: $GITHUB_REF_NAME"
 
       - name: Usando secret sem vazar
+        if: ${{ env.IS_ALLOWED }}
         env:
           MY_SECRET: ${{secrets.MY_SECRET}}
         run: |
@@ -55,6 +60,7 @@ jobs:
           echo "OK: secret carregada"
 
       - name: Gerar relatório
+        if: ${{ env.IS_ALLOWED }}
         run: |
           mkdir -p out
           echo "Relatório do pipeline" > out/relatorio.txt
@@ -72,6 +78,7 @@ jobs:
           cat out/relatorio.txt
 
       - name: Upload do artefato (relatório)
+        if: ${{ env.IS_ALLOWED }}
         uses: actions/upload-artifact@v4
         with:
           name: relatorio-${{ matrix.environment }}
