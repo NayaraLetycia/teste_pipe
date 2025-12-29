@@ -47,7 +47,7 @@ jobs:
           echo "Relatório do pipeline" > out/relatorio.txt
           echo "Repo: $GITHUB_REPOSITORY" >> out/relatorio.txt
           echo "Branch: $GITHUB_REF_NAME" >> out/relatorio.txt
-          exho "SHA: $GITHUB_SHA" >> out/relatorio.txt
+          echo "SHA: $GITHUB_SHA" >> out/relatorio.txt
           echo "Data (UTC): $(date -u)" >> out/relatorio.txt
           echo "ENVIRONMENT: $ENVIRONMENT" >> out/RELATORIO.txt
           ls -la out
