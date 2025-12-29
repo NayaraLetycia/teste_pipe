@@ -67,3 +67,9 @@ jobs:
         with:
           name: relatorio-${{ matrix.environment }}
           path: out/relatorio.txt
+
+      - name: Step exclusivo de PROD
+        if: ${{ matrix.environment == 'prod' }}
+        run: |
+          echo "Rodando somente em PROD"
+          echo "ENVIRONMENT atual: $ENVIRONMENT"
