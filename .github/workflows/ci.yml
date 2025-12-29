@@ -1,0 +1,18 @@
+name: CI - Hello
+
+on:
+  push:
+
+jobs:
+  hello:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Mostrar mensagem
+        run: echo "Teste"
+
+      - name: Mostrar infos do runner
+        run: |
+          uname -a
+          echo "User: $(whoami)"
+          echo "Repo: $GITHUB_REPOSITORY"
+          echo "SHA:  $GITHUB_SHA"
