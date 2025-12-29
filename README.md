@@ -1,3 +1,3 @@
 # teste_pipe
 
-Pipeline de teste com Github Action
+Pipeline para teste com Github Action
