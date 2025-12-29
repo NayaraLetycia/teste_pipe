@@ -5,7 +5,6 @@ on:
 
 jobs:
   hello:
-    if: ${{ matrix.environment != 'prod' || github.ref_name == 'main' }}
     runs-on: ubuntu-latest
 
     strategy:
@@ -17,6 +16,11 @@ jobs:
       ENVIRONMENT: ${{ matrix.environment }}
       
     steps:
+      - name: Bloquear PROD fora da main
+        if: ${{ matrix.environment == 'prod' && github.ref_name != 'main' }}
+        run: |
+          echo "Warning. Prod só roda na main. Branch atual: $GITHUB_REF_NAME"
+          exit 1
       - name: Checkout do repositório
         uses: actions/checkout@v4
 
