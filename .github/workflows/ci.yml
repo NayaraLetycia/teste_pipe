@@ -85,7 +85,7 @@ jobs:
           path: out/relatorio.txt
 
       - name: Step exclusivo de PROD
-        if: ${{ matrix.environment == 'prod' }}
+        if: ${{ matrix.environment == 'prod' && github.ref_name == 'main' }}
         run: |
           echo "Rodando somente em PROD"
           echo "ENVIRONMENT atual: $ENVIRONMENT"
