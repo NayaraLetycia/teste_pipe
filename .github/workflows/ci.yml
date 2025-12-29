@@ -7,9 +7,13 @@ jobs:
   hello:
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        environment: [ci, staging, prod]
+
     env:
       APP_NAME: teste_pipe
-      ENVIRONMENT: ci
+      ENVIRONMENT: ${{ matrix.environment }}
       
     steps:
       - name: Checkout do repositório
