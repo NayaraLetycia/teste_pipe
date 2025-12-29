@@ -30,3 +30,13 @@ jobs:
           echo "Aplicação: $APP_NAME"
           echo "Ambiente: $ENVIRONMENT"
           echo "Branch: $GITHUB_REF_NAME"
+
+      - name: Usando secret sem vazar
+        env:
+          MY_SECRET: ${{secrets.MY_SECRET}}
+        run: |
+          if [ -z "MY_SECRET" ]; then
+            echo "Erro: Secret não foi carregada"
+            exit 1
+          fi
+          echo "OK: secret carregada"
