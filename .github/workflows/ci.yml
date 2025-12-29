@@ -16,10 +16,11 @@ jobs:
       ENVIRONMENT: ${{ matrix.environment }}
       
     steps:
-      - name: Bloquear PROD fora da main
-        if: ${{ matrix.environment != 'prod' && github.ref_name == 'main' }}
+      #- name: Bloquear PROD fora da main
+      #  if: ${{ matrix.environment != 'prod' && github.ref_name == 'main' }}
        
       - name: Checkout do repositório
+        if: ${{ matrix.environment != 'prod' && github.ref_name == 'main' }}
         uses: actions/checkout@v4
 
       - name: Verificações básicas do repositório
