@@ -50,8 +50,12 @@ jobs:
           echo "SHA: $GITHUB_SHA" >> out/relatorio.txt
           echo "Data (UTC): $(date -u)" >> out/relatorio.txt
           echo "ENVIRONMENT: $ENVIRONMENT" >> out/relatorio.txt
+          
           ls -la out
           echo "----"
+
+          test -f out/relatorio.txt
+          
           cat out/relatorio.txt
 
       - name: Upload do artefato (relatório)
