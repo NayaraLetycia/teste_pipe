@@ -33,7 +33,7 @@ jobs:
 
       - name: Usando secret sem vazar
         env:
-          MY_SECRET: ${{secrets.MY_SECRET_ERRADO}}
+          MY_SECRET: ${{secrets.MY_SECRET}}
         run: |
           if [ -z "$MY_SECRET" ]; then
             echo "Erro: Secret não foi carregada"
