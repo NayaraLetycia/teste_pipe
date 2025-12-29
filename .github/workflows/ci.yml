@@ -20,7 +20,7 @@ jobs:
       #  if: ${{ matrix.environment != 'prod' && github.ref_name == 'main' }}
        
       - name: Checkout do repositório
-        if: ${{ matrix.environment != 'prod' && github.ref_name == 'main' }}
+        if: ${{ matrix.environment != 'prod' || github.ref_name == 'main' }}
         uses: actions/checkout@v4
 
       - name: Verificações básicas do repositório
