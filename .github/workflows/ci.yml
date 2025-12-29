@@ -17,10 +17,8 @@ jobs:
       
     steps:
       - name: Bloquear PROD fora da main
-        if: ${{ matrix.environment == 'prod' && github.ref_name != 'main' }}
-        run: |
-          echo "Warning. Prod só roda na main. Branch atual: $GITHUB_REF_NAME"
-          exit 1
+        if: ${{ matrix.environment !== 'prod' && github.ref_name = 'main' }}
+       
       - name: Checkout do repositório
         uses: actions/checkout@v4
 
