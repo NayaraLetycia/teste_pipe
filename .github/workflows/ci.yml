@@ -18,7 +18,7 @@ jobs:
       
       
     steps:
-      #- name: Bloquear PROD fora da main
+      #- name: Bloquear PROD fora da branch main
       #  if: ${{ matrix.environment != 'prod' && github.ref_name == 'main' }}
        
       - name: Checkout do repositório
