@@ -49,7 +49,7 @@ jobs:
           echo "Branch: $GITHUB_REF_NAME" >> out/relatorio.txt
           echo "SHA: $GITHUB_SHA" >> out/relatorio.txt
           echo "Data (UTC): $(date -u)" >> out/relatorio.txt
-          echo "ENVIRONMENT: $ENVIRONMENT" >> out/RELATORIO.txt
+          echo "ENVIRONMENT: $ENVIRONMENT" >> out/relatorio.txt
           ls -la out
           echo "----"
           cat out/relatorio.txt
