@@ -7,12 +7,14 @@ jobs:
   hello:
     runs-on: ubuntu-latest
     steps:
-      - name: Mostrar mensagem
-        run: echo "Teste"
+      - name: Checkout do repositório
+        uses: actions/checkout@v4
 
-      - name: Mostrar infos do runner
+      - name: Listar arquivos do repo
         run: |
-          uname -a
-          echo "User: $(whoami)"
-          echo "Repo: $GITHUB_REPOSITORY"
-          echo "SHA:  $GITHUB_SHA"
+          pwd
+          ls -la
+
+      - name: Mostrar mensagem
+        run: echo "Hello from GitHub Actions!"
+
