@@ -7,13 +7,13 @@ jobs:
   hello:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        environment: prod
+    #strategy:
+      #matrix:
+        #environment: prod
 
     env:
       APP_NAME: teste_pipe
-      #ENVIRONMENT: environment
+      ENVIRONMENT: prod
 
     steps:
       - name: Checkout do repositório
