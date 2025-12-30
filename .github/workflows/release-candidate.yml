@@ -17,30 +17,30 @@ jobs:
 
     steps:
       - name: Checkout do repositório
-        if: ${{ environment == 'prod' && github.ref_name == 'main' }}
+
         uses: actions/checkout@v4
 
       - name: Verificações básicas do repositório
-        if: ${{ environment == 'prod' && github.ref_name == 'main' }}
+
         run: |
           test -f README.md || (echo "ERRO: README.md não existe" && exit 1)
           echo "OK: README.md existe"
 
       - name: Listar arquivos do repo
-        if: ${{ environment == 'prod' && github.ref_name == 'main' }}
+
         run: |
           pwd
           ls -la
 
       - name: Usando variáveis de ambiente
-        if: ${{ environment == 'prod' && github.ref_name == 'main' }}
+
         run: |
           echo "Aplicação: $APP_NAME"
           echo "Ambiente: $ENVIRONMENT"
           echo "Branch: $GITHUB_REF_NAME"
 
       - name: Usando secret sem vazar
-        if: ${{ environment == 'prod' && github.ref_name == 'main' }}
+
         env:
           MY_SECRET: ${{ secrets.MY_SECRET }}
         run: |
@@ -51,7 +51,7 @@ jobs:
           echo "OK: secret carregada"
 
       - name: Gerar relatório
-        if: ${{ environment == 'prod' && github.ref_name == 'main' }}
+
         run: |
           mkdir -p out
           echo "Relatório do pipeline" > out/relatorio.txt
@@ -65,14 +65,14 @@ jobs:
           cat out/relatorio.txt
 
       - name: Upload do artefato (relatório)
-        if: ${{ environment == 'prod' && github.ref_name == 'main' }}
+
         uses: actions/upload-artifact@v4
         with:
           name: relatorio-environment
           path: out/relatorio.txt
 
       - name: Step exclusivo de PROD
-        if: ${{ environment == 'prod' && github.ref_name == 'main' }}
+
         run: |
           echo "Rodando somente em PROD"
           echo "ENVIRONMENT atual: $ENVIRONMENT"
