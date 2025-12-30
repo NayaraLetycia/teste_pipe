@@ -13,7 +13,7 @@ jobs:
 
     env:
       APP_NAME: teste_pipe
-      ENVIRONMENT: environment
+      #ENVIRONMENT: environment
 
     steps:
       - name: Checkout do repositório
